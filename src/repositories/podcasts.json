@@ -17,5 +17,13 @@
             "esporte",
             "corrida"
         ]
+    },
+    {
+        "podcastName": "venus",
+        "episode": "Xuxa",
+        "videoId": "0000",
+        "categories": [
+            "humor"
+        ]
     }
 ]
