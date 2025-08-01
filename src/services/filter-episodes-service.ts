@@ -1,9 +1,8 @@
-import { IncomingMessage } from "http";
 import { repositoryPodcast } from "../repositories/podcasts-repository";
 import { FilterPodcastModel } from "../models/filter-podcast-model";
 import { StatusCode } from "../utils/status-code";
 
-export const serviceFilterEpisodes = async (podcastName: string | undefined) => {
+export const serviceFilterEpisodes = async (podcastName: string | undefined): Promise<FilterPodcastModel> => {
     let responseFormat: FilterPodcastModel = {
         statusCode: 0,
         body: []
@@ -13,13 +12,13 @@ export const serviceFilterEpisodes = async (podcastName: string | undefined) => 
 
     const data = await repositoryPodcast(queryString);
 
-    if(data) {
+    if(data.length !== 0) {
         responseFormat.statusCode = StatusCode.OK;
     } else {
         responseFormat.statusCode = StatusCode.NoContent
     }
 
-    responseFormat.body = data
+    responseFormat.body = data;
 
-    return data;
+    return responseFormat;
 }
